@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#write a bash script that reveals content of /etc/passwd
+while read h; do
+  echo "$h" | cut -d':' -f1,3,6
+done < /etc/passwd
