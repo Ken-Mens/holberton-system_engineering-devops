@@ -1,0 +1,2 @@
+# Bash script that uses ssh to connect to your server using the private key
+ssh -i 0-RSA_public_key.pub  ubuntu@35.229.22.85 
