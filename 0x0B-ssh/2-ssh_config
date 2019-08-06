@@ -1,0 +1,5 @@
+#configure configuration file so that we can connect w/o typing password
+Host 35.229.22.85
+User ubuntu
+IdentityFile ~/.ssh/holberton
+PasswordAuthentication no
