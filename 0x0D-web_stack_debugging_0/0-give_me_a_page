@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Debugs apache in container
+service apache2 restart
