@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#World wide web
+subdomain=( www lb-01 web-01 web-02 )
+sub=$2
+domain=$1
+dig_this()
+{
+	red=$(dig "$1.$2" | awk 'c&&!--c;/ANSWER SECTION:/{c=1}')
+	read -ra args <<<"$red"
+	echo "The subdomain $1 is a ${args[3]} record and points to ${args[4]}"
+}
+if [[ -z $sub ]]; then
+    for xyz in "${subdomain[@]}"; do
+	dig_this "$xyz" "$domain"
+    done
+elif [[ ! -z $sub ]]; then
+    dig_this "$sub" "$domain"
+fi
