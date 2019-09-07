@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+# changed databases backup
 mysqldump -u root -p"$1" --opt --all-databases > backup.sql
 tar -cvzf $(date +"%d-%m-%y").tar.gz backup.sql
