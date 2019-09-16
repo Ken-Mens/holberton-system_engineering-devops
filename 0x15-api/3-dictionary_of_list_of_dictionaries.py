@@ -29,7 +29,8 @@ def dict_of_list():
         user_id = task.get('userId')
         current_task['task'] = task.get('title')
         current_task['completed'] = task.get('completed')
-        current_task['username'] = current_user.get(user_id)
+        right_u = current_user.get(user_id)
+        current_task['username'] = right_u
         workers.get(user_id).append(current_task)
 
     with open(n_file, 'w', newline='') as jsonfile:
