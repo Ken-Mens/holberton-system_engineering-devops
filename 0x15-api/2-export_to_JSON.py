@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """Export to JSON"""
-import requests
 import csv
-from sys import argv
 import json
+import requests
+from sys import argv
 
 
 def export_to_json(user_id):
