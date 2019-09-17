@@ -6,13 +6,12 @@ from sys import argv
 
 
 def export_to_csv(user_id):
-
+    """Export to CSV"""
     user_id = argv[1]
     to_do = 'https://jsonplaceholder.typicode.com/todos/'
     users = 'https://jsonplaceholder.typicode.com/users/'
     todo_req = requests.get(to_do, params={'userId': user_id})
     user_req = requests.get(users, params={'id': user_id})
-
     todo_l = todo_req.json()
     user_l = user_req.json()
 
