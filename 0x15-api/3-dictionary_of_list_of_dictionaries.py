@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """Dictionary of list"""
-import requests
 import csv
-from sys import argv
 import json
+import requests
+from sys import argv
 
 
 def dict_of_list():
@@ -35,7 +35,6 @@ def dict_of_list():
 
     with open(n_file, 'w', newline='') as jsonfile:
         json.dump(workers, jsonfile)
-
 
 if __name__ == "__main__":
     dict_of_list()
