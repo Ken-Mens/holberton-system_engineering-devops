@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Export to CSV"""
-import requests
 import csv
+import requests
 from sys import argv
 
 
@@ -17,7 +17,7 @@ def export_to_csv(user_id):
 
     name = user_l[0].get('username')
     n_file = user_id + '.csv'
-    with open(n_file, 'w', newline='') as csv_file:
+    with open(n_file, 'w') as csv_file:
         tasks = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
         for task in todo_l:
             tasks.writerow([user_id, name,
