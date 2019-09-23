@@ -1,27 +1,23 @@
 #!/usr/bin/python3
-"""Contains the recurse api function"""
-
+"""Contains recursive api function"""
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=None):
+def recurse(subreddit, hot_list=[], after=""):
     if subreddit is None:
         return None
-    url = 'http://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    headers = {'user-agent': 'Kenneth'}
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        after = response.json()["data"]["after"]
-        posts = response.json()["data"]["children"]
-        if posts is None:
-            if len(hot_list) == 0:
-                return hot_list
-        else:
-            for x in posts:
-                hot_list.append(x.get('data', {}).get('title', None))
-        if after is None:
-            if len(hot_list) == 0:
-                return None
-            return hot_list
-        else:
-            return recurse(subreddit, hot_list, after)
+    response = requests.get("https://reddit.com/r/{}/hot.json?after={}".
+                            format(subreddit, after),
+                            headers={"User-agent": "Kenneth"})
+
+    if response.status_code != 200:
+        return None
+    if after is None:
+        return hot_list
+    else:
+        posts = response.json().get("data").get("children")
+        for idx in posts:
+            titles = idx.get("data").get("title")
+            hot_list.append(titles)
+        after = response.json().get("data").get("after")
+        return recurse(subreddit, hot_list, after)
